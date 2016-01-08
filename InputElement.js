@@ -283,7 +283,7 @@ var InputElement = React.createClass({
                   function(fn) { setTimeout(fn, 0); };
 
         var setPos = this.setSelection.bind(this, pos, 0);
-        
+
         setPos();
         raf(setPos);
 
@@ -360,9 +360,11 @@ var InputElement = React.createClass({
         this.permanents = mask.permanents,
         this.maskChar = "maskChar" in nextProps ? nextProps.maskChar : this.defaultMaskChar;
 
-        var newValue = nextProps.value !== undefined
-            ? this.getStringValue(nextProps.value)
-            : this.state.value;
+        // var newValue = nextProps.value !== undefined
+        //     ? this.getStringValue(nextProps.value)
+        //     : this.state.value;
+
+        var newValue = this.getStringValue(nextProps.value);
 
         var showEmpty = nextProps.alwaysShowMask || this.isFocused();
         if (isMaskChanged || (mask.mask && (newValue || showEmpty))) {
@@ -558,7 +560,7 @@ var InputElement = React.createClass({
         this.setState({
             value: value
         });
-      
+
         this.setCaretPos(caretPos);
 
         if (typeof this.props.onChange === "function") {
