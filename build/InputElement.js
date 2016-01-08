@@ -368,7 +368,11 @@ var InputElement = React.createClass({
         this.mask = mask.mask;
         this.permanents = mask.permanents, this.maskChar = "maskChar" in nextProps ? nextProps.maskChar : this.defaultMaskChar;
 
-        var newValue = nextProps.value !== undefined ? this.getStringValue(nextProps.value) : this.state.value;
+        // var newValue = nextProps.value !== undefined
+        //     ? this.getStringValue(nextProps.value)
+        //     : this.state.value;
+
+        var newValue = this.getStringValue(nextProps.value);
 
         var showEmpty = nextProps.alwaysShowMask || this.isFocused();
         if (isMaskChanged || mask.mask && (newValue || showEmpty)) {
